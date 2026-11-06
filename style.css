@@ -754,3 +754,21 @@ button, input, textarea { touch-action: manipulation; }
   .gallery-arrow { flex-basis: 24px; width: 24px; }
   .gallery-auto-hint { font-size: 8px; }
 }
+
+
+/* إظهار القلب الأحمر ككابشن صغير وواضح أسفل صور المعرض */
+.gallery-photo-caption.is-heart-caption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 29px;
+  font-size: 18px;
+  line-height: 1;
+  -webkit-line-clamp: unset;
+}
+.gallery-image-meta p.is-heart-caption {
+  flex: 1;
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.2;
+}

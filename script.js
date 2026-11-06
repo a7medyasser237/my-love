@@ -3,7 +3,7 @@
    كلمة السر الافتراضية: ourlove
    ========================================================= */
 const CONFIG = {
-  password: "ourlove",
+  password: "14321",
   yourName: "أحمد",
   partnerName: "سارة",
   relationshipStart: "2021-03-14T00:00:00",
@@ -442,17 +442,22 @@ function getGalleryItems() {
   return [...visibleCards, ...galleryOnlyCards].map((card, index) => {
     const thumbnail = $('img', card);
     const captionElement = $('.memory-caption, .gallery-photo-caption', card);
-    const caption = captionElement
+    const visibleCaption = captionElement
       ? captionElement.textContent.replace(/\s+/g, ' ').trim()
-      : (card.dataset.galleryCaption || `ذكرى ${index + 1}`);
+      : '';
+    const dataCaption = (card.dataset.galleryCaption || '').trim();
+
+    // الكابشن المكتوب داخل البطاقة هو الأساس، حتى لو كان قلبًا أحمر فقط.
+    // نستخدم data-gallery-caption كبديل عند عدم وجود كابشن ظاهر.
+    const caption = visibleCaption || dataCaption || `ذكرى ${index + 1}`;
     const src = (card.dataset.galleryImage || thumbnail?.getAttribute('src') || '').trim();
     const thumbSrc = thumbnail?.getAttribute('src') || src;
 
     return {
       src,
       thumbSrc,
-      caption: caption || `ذكرى ${index + 1}`,
-      alt: thumbnail?.alt || caption || `ذكرى ${index + 1}`
+      caption,
+      alt: thumbnail?.alt || (caption === '❤️' || caption === '♥' ? `ذكرى ${index + 1}` : caption)
     };
   }).filter((item) => item.src && item.thumbSrc);
 }
@@ -481,6 +486,9 @@ function createGalleryPhoto(item, index, isClone = false) {
 
   const caption = document.createElement('span');
   caption.className = 'gallery-photo-caption';
+  if (item.caption === '❤️' || item.caption === '♥') {
+    caption.classList.add('is-heart-caption');
+  }
   caption.textContent = item.caption;
 
   button.append(image, caption);
@@ -540,7 +548,10 @@ function updateGalleryPosition(animate = true) {
   track.style.transform = `translate3d(${-galleryIndex * galleryStep}px, 0, 0)`;
 
   const visibleIndex = getGalleryVisibleIndex();
-  $('#galleryImageCaption').textContent = galleryItems[visibleIndex].caption;
+  const activeCaption = galleryItems[visibleIndex].caption;
+  const captionMeta = $('#galleryImageCaption');
+  captionMeta.textContent = activeCaption;
+  captionMeta.classList.toggle('is-heart-caption', activeCaption === '❤️' || activeCaption === '♥');
   $('#galleryImageCount').textContent = `${visibleIndex + 1} / ${galleryItems.length}`;
   $$('.gallery-dot').forEach((dot, index) => {
     const active = index === visibleIndex;
