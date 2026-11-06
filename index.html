@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#f7e7e1" />
+  <meta name="description" content="هدية رقمية صغيرة، مصنوعة بحب." />
+  <title>Our place ♥ حكايتنا</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+  <div class="floating-hearts" id="floatingHearts" aria-hidden="true"></div>
+
+  <!-- المرحلة الأولى: اضغط على الظرف لفتحه ورؤية الرسالة المكتوبة حرفًا حرفًا. -->
+  <section class="stage intro-screen" id="introScreen" aria-label="رسالة البداية">
+    <div class="intro-scene">
+      <button class="envelope-scene" id="openEnvelope" type="button" aria-label="افتح الظرف">
+        <span class="envelope-back"></span>
+        <span class="envelope-paper"><span class="paper-name" data-partner-name>شخصي المفضل</span><span class="paper-line"></span></span>
+        <span class="envelope-flap"></span>
+        <span class="envelope-front"></span>
+        <span class="envelope-recipient" data-partner-name>شخصي المفضل</span>
+        <span class="envelope-seal"><svg class="heart-icon heart-icon-filled" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z" fill="currentColor"/></svg></span>
+      </button>
+
+      <article class="intro-letter-card" id="introLetterCard" aria-hidden="true" hidden>
+        <button class="letter-corner-button" id="closeIntroLetter" type="button" aria-label="إغلاق الرسالة والعودة للظرف">↻</button>
+        <div class="letter-card-heart" aria-hidden="true"><svg class="heart-icon heart-icon-filled" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z" fill="currentColor"/></svg></div>
+        <p class="typewriter-text intro-typewriter" id="introTypedText" aria-live="polite"></p>
+        <button class="pill-button intro-continue" id="goToPassword" type="button" hidden>🎀 الدخول للموقع</button>
+      </article>
+    </div>
+    <p class="stage-footer">A LITTLE GIFT, MADE WITH LOVE <span class="footer-mini-heart"><svg class="heart-icon heart-icon-filled" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z" fill="currentColor"/></svg></span></p>
+  </section>
+
+  <!-- المرحلة الثانية: كلمة السر وزر العين لإظهارها أو إخفائها. -->
+  <section class="stage password-screen" id="lockScreen" aria-labelledby="secretTitle" hidden>
+    <div class="password-stage-inner">
+      <div class="password-envelope-art" aria-hidden="true">
+        <span class="password-paper"></span>
+        <span class="password-envelope-body"></span>
+        <span class="password-envelope-flap"></span>
+      </div>
+      <p class="secret-eyebrow" id="secretTitle">ENTER THE SECRET WORD</p>
+      <form id="unlockForm" class="password-form">
+        <label class="sr-only" for="passcode">كلمة السر</label>
+        <div class="password-wrap">
+          <input id="passcode" name="passcode" type="password" placeholder="اكتبي كلمة السر..." autocomplete="current-password" autocapitalize="off" spellcheck="false" required />
+          <button class="password-toggle" id="togglePassword" type="button" aria-label="إظهار كلمة المرور" aria-pressed="false" title="إظهار كلمة المرور">
+            <svg id="passwordEyeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+            <svg id="passwordEyeOffIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden><path d="M3 3l18 18"/><path d="M10.6 10.6a2 2 0 0 0 2.8 2.8"/><path d="M9.9 5.2A10.8 10.8 0 0 1 12 5c6.4 0 10 7 10 7a17.4 17.4 0 0 1-3.1 3.9"/><path d="M6.2 6.2C3.5 8 2 12 2 12s3.6 7 10 7a10.8 10.8 0 0 0 4-.8"/></svg>
+          </button>
+        </div>
+        <button class="pill-button password-submit" type="submit">💞 افتحي الهدية 💞</button>
+        <p class="form-error" id="lockError" role="alert" hidden>مش هي دي كلمة السر 🙈 جرّبي تاني.</p>
+      </form>
+      <p class="password-note">كل حاجة حلوة جوا مستنياكي <span class="inline-heart"><svg class="heart-icon heart-icon-filled" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z" fill="currentColor"/></svg></span></p>
+    </div>
+  </section>
+
+  <!-- المرحلة الثالثة: رسالة قصيرة بعد كلمة السر، ثم الدخول للموقع. -->
+  <section class="stage interlude-screen" id="interludeScreen" hidden aria-label="رسالة ترحيب">
+    <article class="interlude-card" id="interludeCard">
+      <div class="interlude-emoji" aria-hidden="true">💞`</div>
+      <p class="typewriter-text interlude-typewriter" id="interludeTypedText" aria-live="polite"></p>
+      <button class="pill-button interlude-continue" id="enterWebsite" type="button" hidden>🎀 الدخول للموقع</button>
+    </article>
+  </section>
+
+  <!-- الموقع الأساسي: بطاقات متتابعة تظهر بحركة عند التمرير مثل الفيديو. -->
+  <main class="site-content" id="siteContent" hidden>
+    <div class="site-column">
+      <header class="home-heading reveal-on-load">
+        <p class="script-title">Our place</p>
+        <h1 class="couple-names"><span data-your-name>أحمد</span><svg class="heart-icon heart-icon-filled couple-heart" viewBox="0 0 24 24" aria-label="حب"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z" fill="currentColor"/></svg><span data-partner-name>شخصي المفضل</span></h1>
+        <p class="home-subtitle typewriter-text" id="homeSubtitle" data-typewriter-text="المكان بتاعنا إحنا الاتنين بس ♥"></p>
+      </header>
+
+      <section class="counter-card content-card reveal" id="counterSection" aria-labelledby="counterTitle">
+        <h2 id="counterTitle"><span class="mini-heart-pair">💞</span> بدايتنا <span class="mini-heart-pair">💞</span></h2>
+        <div class="counter-grid" aria-live="off">
+          <div class="counter-unit"><strong id="daysCount">000</strong><span>يوم</span></div>
+          <div class="counter-unit"><strong id="hoursCount">00</strong><span>ساعة</span></div>
+          <div class="counter-unit"><strong id="minutesCount">00</strong><span>دقيقة</span></div>
+          <div class="counter-unit"><strong id="secondsCount">00</strong><span>ثانية</span></div>
+        </div>
+        <p class="counter-caption">كل يوم بيعدّي هو وبيخلّي حبنا أكبر <svg class="heart-icon heart-icon-filled" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z" fill="currentColor"/></svg></p>
+      </section>
+
+      <section class="content-card story-card reveal" id="story">
+        <h2>📅 محطات قصتنا</h2>
+        <article class="milestone-card">
+          <h3><svg class="heart-icon heart-icon-filled" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z" fill="currentColor"/></svg> بداية حكايتنا</h3>
+          <p>اليوم اللي بدأ فيه أجمل فصل في حكايتنا.</p>
+          <time id="milestoneDate" class="date-chip" datetime="2021-03-14">2021-03-14 📅</time>
+        </article>
+      </section>
+
+      <section class="content-card chat-card reveal" id="messages">
+        <h2><span class="mini-heart-pair">❤️</span> message <span class="mini-heart-pair">❤️</span></h2>
+        <p class="chat-intro">شوية كلام من القلب، متجمعين هنا علشان تفضلي ترجعي لهم كل ما تحبي.</p>
+        <div class="chat-list" id="chatList" aria-live="polite"></div>
+        <div class="message-edit-area">
+          <button class="edit-mode-button" id="openMessageEditor" type="button">✎ ادخل وضع التعديل لكتابة رسالة</button>
+          <form id="messageEditor" class="message-editor" hidden>
+            <label for="customMessage">اكتب رسالة جديدة</label>
+            <textarea id="customMessage" rows="3" placeholder="اكتبي اللي في قلبك وابعتيلي كتبتي اي هستناكي يا حبيبي ...❤️"></textarea>
+            <button class="pill-button" type="submit">إضافة الرسالة ♥</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="content-card gift-section reveal" id="surprise">
+        <h2>🎁 لسه في حاجة مخبيالك... <svg class="heart-icon heart-icon-filled" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z" fill="currentColor"/></svg></h2>
+        <div class="gift-stage">
+          <article class="gift-note" id="giftReveal" hidden>
+            <img src="New folder/Romantic Arabic Calligraphy Hearts.png" alt="ذكرى جميلة" />
+            <p class="typewriter-text" id="giftMessageText"></p>
+            <span class="gift-note-heart"><svg class="heart-icon heart-icon-filled" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 0l-1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z" fill="currentColor"/></svg></span>
+          </article>
+          <button class="gift-button" id="giftButton" type="button" aria-expanded="false" aria-controls="giftReveal">
+            <span class="gift-box-art" aria-hidden="true"><span class="gift-box-body"></span><span class="gift-ribbon-vertical"></span><span class="gift-box-lid"></span><span class="gift-box-heart"><svg class="heart-icon heart-icon-filled" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z" fill="currentColor"/></svg></span></span>
+            <span class="gift-caption" id="giftButtonLabel">اضغط هنا</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="content-card memories-section reveal" id="memories">
+        <h2 class="memories-title">معرض ذكرياتنا <span class="refresh-symbol" aria-hidden="true">↻</span></h2>
+        <button class="memories-gallery-launch" id="openMemoriesGallery" type="button" aria-haspopup="dialog" aria-controls="memoriesGalleryModal">
+          <span class="gallery-launch-icon" aria-hidden="true">❤️</span>
+          <span>افتحي المعرض ♥</span>
+        </button>
+        <p class="section-subtitle">شوية لحظات نفسنا تفضل معانا على طول.<br> ❤️ دوسي علي كل صورة علشان تشوفي الذكري ❤️</p>
+        <div class="memory-list">
+          <button class="memory-card" type="button" data-gallery-image="New folder/1.jpeg" data-gallery-caption="أحلى لحظة مع بعض">
+            <img src="New folder/11.jpeg" alt="أول صورة لينا مع بعض" loading="lazy" />
+            <span class="memory-caption">أول صورة لينا مع بعض <svg class="heart-icon heart-icon-filled" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z" fill="currentColor"/></svg></span>
+          </button>
+          <button class="memory-card" type="button" data-gallery-image="New folder/2.jpeg" data-gallery-caption="أحلى خروجة">
+            <img src="New folder/22.jpeg" alt="أحلى خروجة لينا" loading="lazy" />
+            <span class="memory-caption">أحلى خروجة <svg class="heart-icon heart-icon-filled" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z" fill="currentColor"/></svg></span>
+          </button>
+          <button class="memory-card" type="button" data-gallery-image="New folder/3.jpeg" data-gallery-caption="أكتر صورة بحبها لينا سوا بسبب ضحكتك اللي فيها">
+            <img src="New folder/33.jpeg" alt="صورة لينا سوا بضحكتك الحلوة" loading="lazy" />
+            <span class="memory-caption">أكتر صورة بحبها لينا سوا بسبب ضحكتك اللي فيها <svg class="heart-icon heart-icon-filled" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z" fill="currentColor"/></svg></span>
+          </button>
+        </div>
+
+        <!-- صور إضافية للمعرض فقط: لا تظهر كبطاقات في الصفحة الرئيسية. -->
+        <div class="gallery-source" id="gallerySource" hidden aria-hidden="true">
+          <button class="gallery-source-item" type="button" data-gallery-image="New folder/5.jpeg" data-gallery-caption="أجمل يوم في حياتنا">
+            <img src="New folder/5.jpeg" alt="أجمل يوم في حياتنا" />
+            <span class="gallery-photo-caption">❤️</span>
+          </button>
+          <button class="gallery-source-item" type="button" data-gallery-image="New folder/6.jpeg" data-gallery-caption="أجمل يوم في حياتنا">
+            <img src="New folder/6.jpeg" alt="أجمل يوم في حياتنا" />
+            <span class="gallery-photo-caption">❤️</span>
+          </button>
+          <button class="gallery-source-item" type="button" data-gallery-image="New folder/7.jpeg" data-gallery-caption="أجمل يوم في حياتنا">
+            <img src="New folder/7.jpeg" alt="أجمل يوم في حياتنا" />
+            <span class="gallery-photo-caption">❤️</span>
+          </button>
+          <button class="gallery-source-item" type="button" data-gallery-image="New folder/8.jpeg" data-gallery-caption="أجمل يوم في حياتنا">
+            <img src="New folder/8.jpeg" alt="أجمل يوم في حياتنا" />
+            <span class="gallery-photo-caption">❤️</span>
+          </button>
+          <button class="gallery-source-item" type="button" data-gallery-image="New folder/9.jpeg" data-gallery-caption="أجمل يوم في حياتنا">
+            <img src="New folder/9.jpeg" alt="أجمل يوم في حياتنا" />
+            <span class="gallery-photo-caption">❤️</span>
+          </button>
+          <button class="gallery-source-item" type="button" data-gallery-image="New folder/10.jpeg" data-gallery-caption="أجمل يوم في حياتنا">
+            <img src="New folder/10.jpeg" alt="أجمل يوم في حياتنا" />
+            <span class="gallery-photo-caption">❤️</span>
+          </button>
+          <button class="gallery-source-item" type="button" data-gallery-image="New folder/111.jpeg" data-gallery-caption="أجمل يوم في حياتنا">
+            <img src="New folder/111.jpeg" alt="أجمل يوم في حياتنا" />
+            <span class="gallery-photo-caption">❤️</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="content-card final-letter-card reveal" id="letter">
+        <div class="final-letter-icon" aria-hidden="true">💌</div>
+        <p class="script-title small-script">A letter from my heart</p>
+        <h2>في رسالة صغيرة <span>مستنياك</span></h2>
+        <p>كل الكلام اللي ما اتقالش، سايبهولك هنا. افتح الرسالة في أي وقت تحب.</p>
+        <button class="pill-button" id="openLetter" type="button">افتح الرسالة ♥</button>
+      </section>
+
+      <footer class="site-footer reveal">
+        اتعملت بكل الحب، علشان <strong data-partner-name>شخصي المفضل</strong> <svg class="heart-icon heart-icon-filled" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z" fill="currentColor"/></svg>
+      </footer>
+    </div>
+  </main>
+
+  <!-- مشغل ثابت أسفل الشاشة كما يظهر في الفيديو. -->
+  <div class="music-dock" id="musicDock" hidden>
+    <button class="music-play-button" id="musicToggle" type="button" aria-label="تشغيل الأغنية" aria-pressed="false"><span id="musicPlayGlyph">▶</span></button>
+    <div class="music-details"><strong id="musicLabel">♥ أغنيتنا ♥</strong><span id="musicSubLabel">أغنيتنا المفضلة</span></div>
+    <div class="music-equalizer" id="musicEqualizer" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  </div>
+
+  <!-- نافذة الرسالة الطويلة. -->
+  <div class="modal" id="letterModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalLetterTitle">
+    <div class="modal-backdrop" data-close-modal></div>
+    <article class="modal-card letter-modal-card" role="document">
+      <button class="modal-close" type="button" data-close-modal aria-label="إغلاق">×</button>
+      <div class="modal-seal"><svg class="heart-icon heart-icon-filled" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z" fill="currentColor"/></svg></div>
+      <p class="script-title small-script">A letter for you</p>
+      <h2 id="modalLetterTitle">رسالة صغيرة من قلبي</h2>
+      <div class="letter-message typewriter-text" id="letterMessage"></div>
+      <p class="modal-signature">بكل الحب، <span data-your-name>أحمد</span> <svg class="heart-icon heart-icon-filled" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z" fill="currentColor"/></svg></p>
+    </article>
+  </div>
+
+  <!-- نافذة تكبير الصور. -->
+  <div class="modal image-modal" id="imageModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="عرض الذكرى">
+    <div class="modal-backdrop" data-close-modal></div>
+    <article class="image-modal-card" role="document">
+      <button class="modal-close" type="button" data-close-modal aria-label="إغلاق">×</button>
+      <img id="expandedImage" src="" alt="" />
+      <p id="expandedCaption"></p>
+    </article>
+  </div>
+
+  <!-- نافذة معرض ذكرياتنا: صور صغيرة تتحرك تلقائيًا ويمكن إيقافها أو التنقل يدويًا. -->
+  <div class="modal memories-gallery-modal" id="memoriesGalleryModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="memoriesGalleryTitle">
+    <div class="modal-backdrop" data-close-modal></div>
+    <article class="gallery-modal-card" role="document">
+      <button class="modal-close" type="button" data-close-modal aria-label="إغلاق المعرض">×</button>
+      <div class="gallery-modal-heading">
+        <span class="gallery-heading-heart" aria-hidden="true">♥</span>
+        <h2 id="memoriesGalleryTitle">معرض ذكرياتنا</h2>
+        <p>كل صورة وراها حكاية صغيرة لينا.</p>
+      </div>
+      <div class="gallery-strip-shell">
+        <button class="gallery-arrow gallery-previous" id="galleryPrevious" type="button" aria-label="الصور السابقة">‹</button>
+        <div class="gallery-viewport" id="galleryViewport" tabindex="0" aria-label="معرض صور متحرك">
+          <div class="gallery-track" id="galleryTrack"></div>
+        </div>
+        <button class="gallery-arrow gallery-next" id="galleryNext" type="button" aria-label="الصور التالية">›</button>
+      </div>
+      <div class="gallery-image-meta">
+        <p id="galleryImageCaption">أحلى لحظة مع بعض</p>
+        <span id="galleryImageCount">1 / 3</span>
+      </div>
+      <div class="gallery-dots" id="galleryDots" aria-label="التنقل بين صور المعرض"></div>
+      <div class="gallery-footer-controls">
+        <button class="gallery-autoplay-button" id="galleryAutoplayToggle" type="button" aria-pressed="true">Ⅱ إيقاف الحركة</button>
+        <span class="gallery-auto-hint">اضغطي على أي صورة لعرضها كاملة</span>
+      </div>
+    </article>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <audio id="backgroundMusic" src="assets/song.mp3.m4a" loop preload="none"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
